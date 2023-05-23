@@ -2,9 +2,11 @@ import Page_template from "@/components/Page_template";
 import ProjectItem from "@/components/ProjectItem";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
+import AddProject_Modal from "@/components/modals/AddProject_Modal";
 
 export default function AdminPage() 
 {
+    const [isNewProjectModalVisible, setIsNewProjectModalVisible] = useState(false);
     const [projects, setProjects ] = useState([]);
 
     useEffect(() => {
@@ -31,6 +33,7 @@ export default function AdminPage()
                 <Button
                 variant = "contained"
                 size="large"
+                onClick={() => setIsNewProjectModalVisible(true)}
                 >
                     Add Project
                 </Button>
@@ -38,6 +41,7 @@ export default function AdminPage()
             {projects.map((project) => (
             <ProjectItem key={project._id} project={project} />))}
 
+            <AddProject_Modal open={isNewProjectModalVisible} onClose={() => setIsNewProjectModalVisible(false)}/>
         </section>
     )
 }
