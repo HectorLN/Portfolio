@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import ProjectForm from "../forms/ProjectForm";
 
-export default function AddProject_Modal ({ open, onClose, onSubmit }) {
+export default function EditProjectModal ({ open, onClose, onSubmit, project }) {
 
   return (
     <Dialog
@@ -9,19 +9,22 @@ export default function AddProject_Modal ({ open, onClose, onSubmit }) {
       onClose={onClose}
     >
       <DialogTitle>
-        Adding a new project...
+        Editing this project...
       </DialogTitle>
       <DialogContent>
-        <ProjectForm onSubmit={onSubmit}/>
+        <ProjectForm
+          editValues={project}
+          onSubmit={onSubmit}
+        />
       </DialogContent>
       <DialogActions>
         <Button
           variant="contained"
           color="error"
-          type="reset"
           form='project-form'
+          onClick={onClose}
         >
-          Clear form
+          Cancel
         </Button>
         <Button
           variant="contained"
@@ -29,7 +32,7 @@ export default function AddProject_Modal ({ open, onClose, onSubmit }) {
           form='project-form'
           onClick={onClose}
         >
-          Add project
+          Update project
         </Button>
       </DialogActions>
     </Dialog>
