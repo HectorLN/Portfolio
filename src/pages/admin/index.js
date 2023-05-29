@@ -1,6 +1,6 @@
 import PageDescription from "@/components/Page_template";
 import ProjectItem from "@/components/ProjectItem";
-import AddNewProjectModal from "@/components/modals/addProject_Modal";
+import AddNewProjectModal from "@/components/modals/AddProject_Modal";
 import EditProjectModal from "@/components/modals/EditProjectModal";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -35,7 +35,7 @@ export default function AdminPage() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/project")
+      const response = await fetch("http://localhost:3000/api/projects")
       const responseJson = await response.json()
       setProjects(responseJson)
     } catch (error) {
